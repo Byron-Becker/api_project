@@ -19,10 +19,10 @@ const rappers = {
     'age': 29,
     'birthName': 'Curtis Jackson',
     'birthLocation': 'Bronx, New York'
-    }
+    },
     
-    'unkown': {
-    'age': 29,
+    'unknown': {
+    'age': 'unkown',
     'birthName': 'unknown',
     'birthLocation': 'unknown'
     }
@@ -35,8 +35,11 @@ app.get('/', (req, res) => {
 
 app.get('/api/:name', (req, res) => {
     const rapperName = req.params.name.toLowerCase()
-    if(rappers[rapperName])
-    res.json(rappers)
+    if(rappers[rapperName]){
+        res.json(rappers[rapperName])
+    }else{
+        res.json(rappers['unknown'])
+    };
 })
 
 
