@@ -3,13 +3,13 @@ const app = express()
 const PORT = 8000
 
 const rappers = {
-    '21 Savage': {
+    '21 savage': {
     'age': 29,
     'birthName': 'Sheyaa',
     'birthLocation': 'London, Englance'
     },
 
-    'Chance tha Rapper': {
+    'chance tha rapper': {
     'age': 29,
     'birthName': 'Doushe ',
     'birthLocation': 'Philly'
@@ -21,6 +21,12 @@ const rappers = {
     'birthLocation': 'Bronx, New York'
     }
     
+    'unkown': {
+    'age': 29,
+    'birthName': 'unknown',
+    'birthLocation': 'unknown'
+    }
+    
 }
 
 app.get('/', (req, res) => {
@@ -28,7 +34,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/:name', (req, res) => {
-    req.params.name
+    const rapperName = req.params.name.toLowerCase()
+    if(rappers[rapperName])
     res.json(rappers)
 })
 
